@@ -2,11 +2,17 @@ let result=null;
 let input= " ";
 function updateDisplay(){
 	document.getElementById("inputext").value=input;
+
 }
-function appendCharacter(character){
-	input+=character;
+function appendCharacter(character) {
+	if (character === '%' && input !== "") {
+		input = (parseFloat(input) / 100).toString();
+	} else {
+		input += character;
+	}
 	updateDisplay();
 }
+
 function clearDisplay(){
 	input="";
 	result=null;
@@ -30,7 +36,7 @@ function DeletelastCharacter() {
 function calculateResult() {
 	try {
 		result = eval(input);
-		input = result.toString();
+		input = result.toString()
 		updateDisplay();
 	} catch (error) {
 		input = "Error";
@@ -38,7 +44,5 @@ function calculateResult() {
 		result = null;
 	}
 }
-
-
 
 

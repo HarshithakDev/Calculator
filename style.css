@@ -68,7 +68,12 @@
     cursor: pointer;
 }
 
-
+.History{
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-left: 12px;
+    margin-bottom: 10px;
+}
 
 
 
