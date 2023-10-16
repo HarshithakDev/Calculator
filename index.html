@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+	<div class="calculator">
+		<form>
+			<div class="display">
+				<input type="text"  id="inputext" placeholder="0">
+			</div>
+			
+			
+			
+			<div class="keys">
+				<div class="btn" onclick="clearDisplay()">AC </div>
+				<div class="btn" onclick="DeletelastCharacter()">DE</div>
+				<div class="btn" onclick="Changesign()">+/- </div>
+				<div class="btn" onclick="appendCharacter('/')">/</div>
+				<div class="btn" onclick="appendCharacter('7')">7 </div>
+				<div class="btn" onclick="appendCharacter('8')">8</div>
+				<div class="btn" onclick="appendCharacter('9')">9 </div>
+				<div class="btn" onclick="appendCharacter('*')">*</div>
+				<div class="btn" onclick="appendCharacter('4')">4</div>
+				<div class="btn" onclick="appendCharacter('5')">5</div>
+				<div class="btn" onclick="appendCharacter('6')">6 </div>
+				<div class="btn" onclick="appendCharacter('-')">-</div>
+				<div class="btn" onclick="appendCharacter('1')">1 </div>
+				<div class="btn" onclick="appendCharacter('2')">2</div>
+				<div class="btn" onclick="appendCharacter('3')">3</div>
+				<div class="btn" onclick="appendCharacter('+')">+</div>
+				<div class="btn" onclick="appendCharacter('%')">% </div>
+				<div class="btn" onclick="appendCharacter('0')">0 </div>
+				<div class="btn" onclick="appendCharacter('.')">. </div>
+				<div class="btn" onclick="calculateResult()">=</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script src="calc.js"></script>
+</bodY>
+</html>
