@@ -10,6 +10,21 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    position: static;
+}
+
+.history {
+    display: none;
+    width: 300px;
+    height: 78vh;
+    background-color: grey;
+
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 8px;
+
 }
 
 .calculator{
@@ -67,27 +82,15 @@
     font-size: 25px;
     cursor: pointer;
 }
+#showHistoryButton{
+    height: 30px;
+    width: 50px;
+    margin-top: 120px;
+    color: grey;
 
-.History{
-    padding: 5px;
-    border: 1px solid #ccc;
-    margin-left: 12px;
-    margin-bottom: 10px;
-}
-#hist{
-    display:none;
-    background: lightblue;
-    font-size:20px;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 300px;
-    height: 500px;
 
 }
+
 
 
 

@@ -10,16 +10,20 @@ function updateDisplay(){
 }
 function appendCharacter(character) {
 	const lastChar = input.slice(-1);
-	if (character === '%' && input !== "") {
-		input = (parseFloat(input) / 100).toString();
-	} else if (lastChar === '+' || lastChar === '-' || lastChar === '*' || lastChar === '/') {
+	
+	if ((lastChar === '+' || lastChar === '-' || lastChar === '*' || lastChar === '/') && (character === '+' || character === '-' || character === '*' || character === '/')) {
+		
 		input = input.slice(0, -1) + character;
-	}
-	else {
+	} else if (character === '%' && input !== "") {
+		
+		input = (parseFloat(input) / 100).toString();
+	} else {
 		input += character;
 	}
+	
 	updateDisplay();
 }
+
 function clearDisplay(){
 	input="";
 	result=null;
@@ -44,7 +48,7 @@ function calculateResult() {
 	try {
 		result = eval(input);
 		result_data = result;
-		histdata.push({ "expression":expression,"result":result_data});
+		histdata.push({ "expression":input,"result":result_data});
 		showHistory();
 		result_data="" ;
 		expression = "";
@@ -53,20 +57,38 @@ function calculateResult() {
 		
 	} catch (error) {
 		input = "Error";
+		expression="Error";
 		updateDisplay();
 		result = null;
 	}
 }
-function showHistory(){
+function showHistory() {
 	let log = document.getElementById('hist');
-	let str="";
-	for( let K in histdata){
-		str+=histdata[K]["expression"]+"="+histdata[K]["result"]+"<br>";
-		log.innerHTML=str;
-		updateDisplay();
+	let str = "";
+	for (let i = 0; i < histdata.length; i++) {
+		str += histdata[i]["expression"] + " = " + histdata[i]["result"] + "<br>";
+	}
+	log.innerHTML =str;
+}
+let historyVisible = false; 
+
+function toggleHistory() {
+	const historyLog = document.getElementById("hist");
+	const historyButton = document.getElementById("showHistoryButton");
+	
+	if (!historyVisible) {
+		historyLog.style.display = "block";
+		historyButton.textContent = "Hide ";
+		showHistory();
+	} else {
+		historyLog.style.display = "none";
+		historyButton.textContent = "History";
 	}
 	
+	historyVisible = !historyVisible;
 }
+
+
 
 
 
