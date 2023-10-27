@@ -1,18 +1,15 @@
 let result=null;
 let input= " ";
 let histdata=[];
-let expression = " ";
+// let expression = " ";
 let result_data =" ";
 let x=true;
 let y="";
 function updateDisplay(){
-	if(input.slice(-1)==="*"){
-		document.getElementById("inputext").value=input.slice(0,-1);
-	}else {
+	//if(input.slice(-1)==="*"){
+		//document.getElementById("inputext").value=input.slice(0,-1);
+	//}else {
 		document.getElementById("inputext").value=input;
-	}
-	
-
 }
 function appendCharacter(character) {
 	const lastChar = input.slice(-1);
@@ -21,8 +18,9 @@ function appendCharacter(character) {
 		
 		input = input.slice(0, -1) + character;
 	} else if (character === '%' && input !== "") {
-		expression =input=input + '%';
+		input=input + '%';
 	
+		
 		if (input.includes('+') === false && input.includes('-') === false && input.includes('*') === false && input.includes('/') === false) {
 			// input = (parseFloat(input) / 100).toString()+'*';
 			result = (parseFloat(input.slice(0,-1)) / 100).toString();
@@ -36,10 +34,12 @@ function appendCharacter(character) {
 					} else if (input.slice(-i).includes('-')) {
 						tempper = (parseFloat(temp) - (parseFloat(per.slice(0,-1)) / 100 * parseFloat(temp))).toString();
 					} else if (input.slice(-i).includes('*')) {
-						tempper = (parseFloat(per.slice(0,-1)) / 100 * parseFloat(temp)).toString();
+						tempper =(parseFloat(temp) * (parseFloat(per.slice(0,-1)) / 100 * parseFloat(temp))).toString();
 					} else if (input.slice(-i).includes('/')) {
 						tempper = (parseFloat(temp) / parseFloat(per.slice(0,-1)) * 100).toString();
-					}
+					}//else if(input.slice(-i).includes('%')){
+						//tempper=(parseFloat(temp)/parseFloat(per.slice(0,-1))*100).toString();
+					//}
 					result=tempper;
 					if(x===true){
 						x=false;
@@ -58,26 +58,20 @@ function appendCharacter(character) {
 			x=true;
 			input = y+character;
 			}
-			
-			
 		}
-		// percentage = (value2 - value1) / (value1) * 100;
 		updateDisplay();
 	}
-	
 	function clearDisplay() {
 		input = "";
 		y="";
 		result = null;
 		updateDisplay();
 	}
-	
 	function DeletelastCharacter() {
 		input = input.slice(0, -1);
 		y=y.slice(0,-1);
 		updateDisplay();
 	}
-	
 	function Changesign() {
 		if (input !== "") {
 			if (input[0] === '-') {
@@ -90,7 +84,6 @@ function appendCharacter(character) {
 	}
 	
 	let resultAddedToHistory = false;
-	
 	function calculateResult() {
 		if (input.trim() !== "") {
 			try {
@@ -103,12 +96,12 @@ function appendCharacter(character) {
 				if (!isNaN(result)) {
 					if (!resultAddedToHistory) {
 						result_data = result;
-						histdata.push({"expression": input, "result": result_data});
+						histdata.push({"expression":input, "result": result_data});
 						resultAddedToHistory = true;
 					}
 					showHistory();
 					result_data = "";
-					expression = "";
+					//expression = "";
 					input = result.toString();
 					updateDisplay();
 				} else {
@@ -126,8 +119,6 @@ function appendCharacter(character) {
 			}
 		}
 	}
-	
-	
 	function showHistory() {
 		let log = document.getElementById('hist');
 		let str = "";
@@ -135,11 +126,11 @@ function appendCharacter(character) {
 			str += histdata[i]["expression"] + " = " + histdata[i]["result"] + "<br>";
 			log.innerHTML = str;
 		}
-		// log.innerHTML =str;
+		//str+=histdata[1]["expression"]+"="+ histdata[1]["result"];
+		//log.innerHTML =str;
 	}
 	
 	let historyVisible = false;
-	
 	function toggleHistory() {
 		const historyLog = document.getElementById("hist");
 		const historyButton = document.getElementById("showHistoryButton");
